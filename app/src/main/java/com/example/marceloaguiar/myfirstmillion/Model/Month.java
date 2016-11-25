@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 /**
  * Created by marceloaguiar on 11/24/16.
@@ -89,5 +90,28 @@ public class Month {
 
     public HashMap<ReceiptCategory, Double> getReceiptValues() {
         return receiptValues;
+    }
+
+    public void addExpense(ReceiptCategory receiptCategory, Expense expense) {
+        List<Expense> expenseListOfCategory = this.getCategoryReceiptExpenses(receiptCategory);
+        expenseListOfCategory.add(expense);
+        this.receiptExpenses.put(receiptCategory,expenseListOfCategory);
+    }
+
+    public Double calculateTotalBalance() {
+        Double result = this.getValue();
+        for (ReceiptCategory receiptsCategory :
+                ReceiptCategory.values()) {
+            List<Expense> expenses = this.getCategoryReceiptExpenses(receiptsCategory);
+            for (Expense expense:
+                    expenses) {
+                result = result - expense.getValue();
+            }
+        }
+        return result;
+    }
+
+    public String getTotalBalanceFormatted(){
+        return this.format.format(this.calculateTotalBalance());
     }
 }

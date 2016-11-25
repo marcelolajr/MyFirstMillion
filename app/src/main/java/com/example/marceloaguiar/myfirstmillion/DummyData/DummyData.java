@@ -15,7 +15,7 @@ public class DummyData {
     public DummyData() {
         this.months = new ArrayList<>();
         this.months.add(Month.newInstance(2000, MonthValue.DECEMBER,2016));
-        this.months.add(Month.newInstance(2000, MonthValue.NOVEMBER,2016));
+        this.months.add(Month.newInstance(2000, MonthValue.NOVEMBER,2014));
     }
 
 }

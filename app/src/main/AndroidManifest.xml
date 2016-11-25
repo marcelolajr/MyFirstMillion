@@ -18,6 +18,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MonthActivity" />
+        <activity
+            android:name=".NewMonthActivity"
+            android:label="@string/title_activity_new_month"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

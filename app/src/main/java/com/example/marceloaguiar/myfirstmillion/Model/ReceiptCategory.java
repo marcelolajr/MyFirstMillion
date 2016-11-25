@@ -10,7 +10,7 @@ public enum ReceiptCategory {
     LONGTEERMINVESTMENT (10, "Investimentos a longo prazo"),
     SHORTTEERMINVESTMENT (10, "Investimentos a curto prazo"),
     FREEDOM (10, "Liberdade"),
-    TEST (5, "Teste");
+    TEST (5, "Doação/Emergência");
 
     private Integer percentage;
     private String description;

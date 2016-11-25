@@ -13,8 +13,16 @@
     tools:context="com.example.marceloaguiar.myfirstmillion.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <fragment
+        android:id="@+id/avatarFragment"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:name="com.example.marceloaguiar.myfirstmillion.AvatarFragment"/>
+
+    <fragment
+        android:id="@+id/monthListFragment"
+        android:layout_below="@id/avatarFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:name="com.example.marceloaguiar.myfirstmillion.MonthListFragment"/>
 </RelativeLayout>

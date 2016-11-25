@@ -17,8 +17,10 @@ import com.example.marceloaguiar.myfirstmillion.R;
 public class MonthAdapter extends RecyclerView.Adapter<MonthAdapter.ViewHolder> {
 
     DummyData dummy;
+    MonthListener listener;
 
-    public MonthAdapter() {
+    public MonthAdapter(MonthListener monthListener) {
+        this.listener = monthListener;
         this.dummy = new DummyData();
     }
 
@@ -32,9 +34,16 @@ public class MonthAdapter extends RecyclerView.Adapter<MonthAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Month month = this.dummy.months.get(position);
+        final Month month = this.dummy.months.get(position);
+        holder.view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                listener.onMonthSelected(month);
+            }
+        });
         holder.txtViewMonth.setText(month.getMonthValue().toString());
-        holder.txtViewMonth.setText(month.getYear().toString());
+        holder.txtViewYear.setText(month.getYear().toString());
+        holder.txtViewTotalBalance.setText(month.getTotalBalanceFormatted().toString());
     }
 
     @Override
@@ -45,12 +54,16 @@ public class MonthAdapter extends RecyclerView.Adapter<MonthAdapter.ViewHolder> 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final TextView txtViewMonth;
         public final TextView txtViewYear;
-
+        public final TextView txtViewTotalBalance;
+        public final View view;
 
         public ViewHolder(View itemView) {
             super(itemView);
+
+            view = itemView;
             txtViewMonth = (TextView) itemView.findViewById(R.id.month);
             txtViewYear = (TextView) itemView.findViewById(R.id.year);
+            txtViewTotalBalance = (TextView) itemView.findViewById(R.id.TotalBalance);
         }
     }
 
